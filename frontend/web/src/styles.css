@@ -1,0 +1,295 @@
+/* Estilos gerais */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+h1,
+h2,
+h3 {
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos do formulário */
+.form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.contract-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.form-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.form-buttons button[type='button'] {
+  background-color: #6b7280;
+}
+
+.form-buttons button:hover {
+  opacity: 0.9;
+}
+
+/* Estilos da lista */
+.list-container {
+  width: 100%;
+  max-width: 1400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.filter-input-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.filter-input-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.filter-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.contract-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.contract-table th,
+.contract-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.contract-table th {
+  background-color: #2563eb;
+  color: white;
+}
+
+.contract-table td button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #2563eb;
+  color: white;
+}
+
+.delete-button {
+  background-color: #dc2626;
+  color: white;
+}
+
+.contract-table td button:hover {
+  opacity: 0.9;
+}
+
+.alert-red {
+  background-color: #ffe6e6 !important;
+}
+
+.alert-orange {
+  background-color: #fff4e6 !important;
+}
+
+.alert-green {
+  background-color: #e6ffed !important;
+}
+
+/* Estilização para a coluna Descrição */
+.contract-table th:nth-child(5),
+.contract-table td:nth-child(5) {
+  width: 25%;
+  max-width: 250px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* Estilização para a coluna Tipo de Processo */
+.contract-table th:nth-child(6),
+.contract-table td:nth-child(6) {
+  width: 15%;
+  max-width: 200px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* Ajuste para o título Lista de Contratos */
+.list-container h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Estilo para o botão Novo Contrato */
+.new-contract-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.new-contract-button:hover {
+  background-color: #218838;
+}
+
+/* Estilo para o contêiner do botão Sair */
+.logout-container {
+  margin-top: 20px;
+  text-align: right;
+}
+
+/* Estilo para o botão Sair */
+.logout-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #6b7280;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-button:hover {
+  opacity: 0.9;
+}
+
+/* Estilos para Login */
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form .form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.login-form .form-group input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.login-form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.login-form button:hover {
+  opacity: 0.9;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Estilo para o spinner */
+.spinner {
+  text-align: center;
+  font-size: 1.2em;
+  color: #2563eb;
+  margin: 20px 0;
+}
