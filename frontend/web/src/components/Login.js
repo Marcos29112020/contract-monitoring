@@ -15,7 +15,7 @@ const Login = () => {
     setError('');
     try {
       console.log(`Tentando login com: identifier=${identifier}, password=${password}`);
-      const response = await axios.post('http://192.168.1.110:5000/api/login', {
+      const response = await axios.post('http://localhost:5000/api/login', {
         identifier,
         password,
       }, {

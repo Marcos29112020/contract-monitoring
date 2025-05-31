@@ -29,7 +29,7 @@ const ContractForm = () => {
             navigate('/login');
             return;
           }
-          const response = await axios.get(`http://192.168.1.110:5000/api/contracts/${id}`, {
+          const response = await axios.get(`http://localhost:5000/api/contracts/${id}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setSelectedContract(response.data);
@@ -112,7 +112,7 @@ const ContractForm = () => {
       let response;
       if (selectedContract) {
         response = await axios.put(
-          `http://192.168.1.110:5000/api/contracts/${selectedContract.id}`,
+          `http://localhost:5000/api/contracts/${selectedContract.id}`,
           payload,
           {
             headers: {
@@ -123,7 +123,7 @@ const ContractForm = () => {
         );
         alert('Contrato atualizado com sucesso!');
       } else {
-        response = await axios.post('http://192.168.1.110:5000/api/contracts', payload, {
+        response = await axios.post('http://localhost:5000/api/contracts', payload, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
