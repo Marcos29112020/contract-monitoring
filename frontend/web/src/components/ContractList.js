@@ -6,7 +6,7 @@ import '../styles.css';
 
 const ContractList = () => {
   const [contracts, setContracts] = useState([]);
-  const [secretariat, setSecretariat] = useState('');
+  const [secretariat, setSecretariat] = useState("");
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -18,32 +18,15 @@ const ContractList = () => {
 
     const fetchContracts = async () => {
       try {
-        const secretariatValue = secretariat.trim();
-        console.log('Filtrando contratos com secretariat:', secretariatValue || 'nenhum');
-        const response = await axios.get('http://192.168.1.110:5000/api/contracts', {
+        const response = await axios.get('http://localhost:5000/api/contracts', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-          params: secretariatValue ? { secretariat: secretariatValue } : {},
+          }
         });
-        console.log('Resposta bruta do backend:', JSON.stringify(response.data, null, 2));
-        console.log('Resposta formatada (contratos):', JSON.stringify({
-          count: response.data.length,
-          contracts: response.data.map(c => ({
-            id: c.id,
-            secretariat: c.secretariat,
-            contract_number: c.contract_number,
-            alert_status: c.alert_status,
-          })),
-        }, null, 2));
         setContracts(response.data);
         setError('');
       } catch (err) {
-        console.error('Erro ao carregar contratos:', {
-          message: err.message,
-          response: err.response?.data,
-          status: err.response?.status,
-        });
+        console.error('Erro ao carregar contratos:', err.response?.data || err.message);
         setContracts([]);
         setError(err.response?.data?.error || 'Erro ao carregar contratos');
         if (err.response?.status === 401) {
@@ -54,12 +37,12 @@ const ContractList = () => {
     };
 
     fetchContracts();
-  }, [navigate, secretariat]);
+  }, [navigate]);
 
   const handleDelete = async (id) => {
     if (window.confirm('Tem certeza que deseja excluir este contrato?')) {
       try {
-        await axios.delete(`http://192.168.1.110:5000/api/contracts/${id}`, {
+        await axios.delete(`http://localhost:5000/api/contracts/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -71,6 +54,12 @@ const ContractList = () => {
       }
     }
   };
+
+  // Filtro local com base no texto digitado
+  const resultadosFiltrados = contracts.filter((contract) =>
+    contract.secretariat &&
+    contract.secretariat.toLowerCase().includes(secretariat.toLowerCase())
+  );
 
   return (
     <div className="list-container">
@@ -104,14 +93,14 @@ const ContractList = () => {
           </tr>
         </thead>
         <tbody>
-          {contracts.length === 0 ? (
+          {resultadosFiltrados.length === 0 ? (
             <tr>
               <td colSpan="7" style={{ textAlign: 'center' }}>
                 Nenhum contrato encontrado
               </td>
             </tr>
           ) : (
-            contracts.map((contract) => (
+            resultadosFiltrados.map((contract) => (
               <tr key={contract.id} className={`alert-${contract.alert_status}`}>
                 <td>{contract.secretariat}</td>
                 <td>{contract.contract_number}</td>
